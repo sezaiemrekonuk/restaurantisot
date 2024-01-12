@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Pristina&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300&family=Sevillana&display=swap');
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+/* Your other styles here */
+
+.tooltip {
+  position: absolute;
+  top: 70%;
+  left: 24rem;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+  border-radius: 5px;
+  text-align: left; /* Align the text to the left */
+}
+
+ 
+
+@media only screen and (max-width: 1040px) {
+  .tooltip {
+    left: 20rem !important;
+  }
+
+}
+
+@media only screen and (max-width: 641px) {
+  .tooltip {
+    left: 10rem !important;
+  }
+
+}
+
+@media only screen and (max-width: 360px) {
+  .tooltip {
+    left: 3rem !important;
+  }
+
+}
+
+@media only screen and (max-width: 1040px) {
+  .list {
+    display: none !important;
+  }
+
+}
+
+@media only screen and (min-width: 640px) {
+  .writing {
+    bottom: 4rem !important;
+  }
+
+
+@media only screen and (max-width: 760px) {
+  .writing {
+    bottom: 4rem !important;
+  }
+
+}
+
+@media only screen and (min-width: 640px) {
+  .writing {
+    bottom: 10rem !important;
+  }
+
+}
+
+}
+
+@media only screen and (min-width: 1040px) {
+  .icon {
+    display: none !important;
+  }
+
+}
+
+@media only screen and (min-width: 410px) {
+  .writing {
+    bottom: 30px !important;
+  }
+
+}
+
+
+
+
+.pristina-font {
+  font-family: 'Pristina', cursive;
+}
+
+.roboto {
+  font-family: "Roboto", cursive;
+}
+
+@layer utilities {
+  .duration-high {
+    @apply transition-all duration-300 ease-in-out;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.spin {
+  animation: spin 40s linear infinite;
+}
+
+#root > div > div.shadow-md.bg-white.dark\:bg-gray-900.dark\:text-white.duration-200 > div > div > div:nth-child(1) > a{
+  font-family: 'Sevillana', cursive !important;
+}
+
+
+*, body {
+
+  border: "2px solid red" !important;
+}
+ 
