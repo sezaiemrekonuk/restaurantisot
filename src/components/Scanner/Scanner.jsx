@@ -68,6 +68,9 @@ const QRScanner = () => {
           onError={handleError}
           style={{ width: '100%' }}
           onResult={(data) => handleScan(data)}
+          constraints={{
+            facingMode: 'environment'
+        }}
         />
       </div>
 <p style={{fontFamily:"Sevillana", fontWeight:"bold", fontSize:"2rem"}}>RestaurantIsot Giftcard Scanner</p>
