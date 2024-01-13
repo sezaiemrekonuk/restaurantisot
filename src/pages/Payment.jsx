@@ -13,7 +13,7 @@ export default function Payment() {
           },
         ],
         mode: 'payment',
-        successUrl: `https://65a1ce611e52d95c9746bf2c--thunderous-bunny-4f6d0f.netlify.app/success?session_id={CHECKOUT_SESSION_ID}`,
+        successUrl: `http://www.restaurantisot.com/success?session_id={CHECKOUT_SESSION_ID}`,
         cancelUrl: `http://localhost:3000/cancel`,
         customerEmail: 'customer@email.com',
       });
