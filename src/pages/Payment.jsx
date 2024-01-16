@@ -13,8 +13,8 @@ export default function Payment() {
           },
         ],
         mode: 'payment',
-        successUrl: `https://main--tubular-croissant-32c870.netlify.app/success?session_id={CHECKOUT_SESSION_ID}`,
-        cancelUrl: `http://localhost:3000/cancel`,
+        successUrl: `http://www.restaurantisot.com/success?session_id={CHECKOUT_SESSION_ID}?payment_success=true`,
+        cancelUrl: `http://www.restaurantisot.com/cancel`,
         customerEmail: 'customer@email.com',
       });
 
@@ -26,6 +26,8 @@ export default function Payment() {
 
   useEffect(() => {
     handleCheckout();
+
+    localStorage.setItem("context", "head")
   }, []);
 
   return <></>;

@@ -22,8 +22,20 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        include: path.resolve(__dirname, 'src'),
+        exclude: /\.module\.css$/i,
         use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.module\.css$/i,
+        use: ['style-loader', 'css-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.scss$/i,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+      },
+      {
+        test: /\.less$/i,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
       },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
@@ -32,7 +44,7 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'assets/Modals/', // Adjust the path accordingly
+              outputPath: 'assets/Modals/',
             },
           },
         ],
@@ -43,13 +55,29 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
-              limit: 8192, // Convert images smaller than 8kb to base64 strings
+              limit: 8192,
               name: '[name].[ext]',
-              outputPath: 'assets/Modals/', // Adjust the path accordingly
+              outputPath: 'assets/Modals/',
             },
           },
         ],
       },
+      {
+   
+         
+              test: /\.scss$/,
+              use: [
+                  "style-loader", // 3. Inject styles into DOM
+                  "css-loader", // 2. Turns css into commonjs
+                  "sass-loader", // 1. Turns sass into css
+              ],
+          },
+          { // here doing the swiper loader and declaring no sideEffects
+            test: /swiper\.esm\.js/,
+            sideEffects: false
+          }
+     
+      
     ],
   },
   devServer: {

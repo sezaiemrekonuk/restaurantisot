@@ -12,8 +12,9 @@ import Success from "./pages/Success.jsx";
 import Scanner from "./components/Scanner/Scanner.jsx"
 import Login from "./pages/Login.jsx";
 import Admin from "./pages/Admin.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx";
-import PrivateRoute from "./lib/PrivateRoute.jsx";
+import Campaign from "./pages/Campaign.jsx";
+import Footer from "./components/Footer/Footer.jsx";
+
 
 const App = () => {
 
@@ -41,6 +42,7 @@ const App = () => {
     <Route path="/scan" element={<Scanner />}/>
     <Route path="/login" element={<Login />}/>
     <Route path="/admin" element={<Admin />}/>
+    <Route path="/campaign" element={<Campaign />}/>
     </Route>
    
     </Routes>

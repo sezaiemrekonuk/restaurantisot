@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import AboutImage from '../../assets/Modals/about.webp';
 import Yelp from '../../assets/Modals/yelp.webp';
@@ -8,6 +8,7 @@ import Contact from "../../assets/Modals/contact.webp";
 import Order from '../Catering/Catering.jsx';
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from 'react-router-dom';
+import Menu from "../Menu/Menu.jsx";
 
 const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -16,8 +17,7 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageKey, setImageKey] = useState(0); 
 
-const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -35,15 +35,16 @@ const navigate = useNavigate();
     return () => {
       window.removeEventListener('resize', handleResize);
     };
+
   }, []);
 
   const handleImageLoad = () => {
     setImageLoaded(true);
   };
 
-  const navigateToPayment = (()=> {
-    navigate("/payments")
-  })
+  const navigateToPayment = () => {
+    navigate("/payments");
+  };
 
   const getImageForMenuItem = () => {
     if (selectedMenuItem) {
@@ -58,13 +59,14 @@ const navigate = useNavigate();
           return { src: Contact, key: 'contact' };
         case 'Catering':
           return { src: Catering, key: 'catering' };
+        case 'Menu':
+          return { src: Menu, key: 'menu' }; // Display the "Menu" image
         default:
           return null;
       }
     }
     return null;
   };
-  
 
   const handleLinkClick = (event) => {
     if (selectedMenuItem.name === "Reservations" && selectedMenuItem.link) {
@@ -98,6 +100,7 @@ const navigate = useNavigate();
       style={{
         overlay: {
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex:"2000"
         },
         content: {
           top: '50%',
@@ -124,24 +127,46 @@ const navigate = useNavigate();
             width: '100%',
             height: '100%',
             cursor: selectedMenuItem.link ? 'pointer' : 'default',
+            overflow: "hidden"
           }}
         >
-          {selectedMenuItem.name === "Order" ? <Order /> : (
+          {selectedMenuItem.name === 'Order' ? (
+            <Order />
+          ) : (
             <>
               {getImageForMenuItem() && (
-                <img
-                key={imageKey + getImageForMenuItem().key} 
-                 onLoad={handleImageLoad}
-                  onMouseEnter={() => setIsHovered(true)}
-                  onMouseLeave={() => setIsHovered(false)}
-                  onClick={handleLinkClick}
-                  src={getImageForMenuItem().src}
-                  alt={selectedMenuItem.name}
-                  style={{ width: "auto", minHeight: '600px', objectFit: 'contain' }}
-                  loading="lazy"
-                />
+                <>
+                  {selectedMenuItem.name === 'Menu' ? (
+                     
+                    // Adjusted styles for the "Menu" component
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '-5rem', 
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '100%',
+                      }}
+                    >
+                      <Menu />
+                    </div>
+                  ) : (
+                    // Styles for other menu items
+                    <img
+                      key={imageKey + getImageForMenuItem().key}
+                      onLoad={handleImageLoad}
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
+                      onClick={handleLinkClick}
+                      src={getImageForMenuItem().src}
+                      alt={selectedMenuItem.name}
+                      style={{ width: "auto", minHeight: '600px', objectFit: 'contain' }}
+                      loading="lazy"
+                    />
+                  )}
+                </>
               )}
-              {selectedMenuItem.name !== "Order" && isHovered && selectedMenuItem.link && (
+              {selectedMenuItem.name !== 'Order' && isHovered && selectedMenuItem.link && (
                 <div
                   style={{
                     position: 'absolute',
@@ -151,27 +176,28 @@ const navigate = useNavigate();
                     backgroundColor: 'rgba(255, 255, 255, 0.7)',
                     padding: '10px',
                     borderRadius: '5px',
+                    overflow: "hidden"
                   }}
                 >
                   Go to {selectedMenuItem.name} page
                 </div>
               )}
 
-              {!imageLoaded && (
-                                <div
-                                style={{
-                                  position: 'absolute',
-                                  top: '50%',
-                                  left: '50%',
-                                  transform: 'translate(-50%, -50%)',
-                                  backgroundColor: 'rgba(255, 255, 255, 0.7)',
-                                  padding: '10px',
-                                  borderRadius: '5px',
-                                }}
-                              >
-                                <ClipLoader size={30} color={'#ffffff'} loading={!imageLoaded} />
-                              </div>
-              )}
+{!imageLoaded && selectedMenuItem.name !== "Menu" && (
+  <div
+    style={{
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      transform: 'translate(-50%, -50%)',
+      backgroundColor: 'rgba(255, 255, 255, 0.7)',
+      padding: '10px',
+      borderRadius: '5px',
+    }}
+  >
+    <ClipLoader size={30} color={'#ffffff'} loading={!imageLoaded} />
+  </div>
+)}
             </>
           )}
         </div>

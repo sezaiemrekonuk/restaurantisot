@@ -16,7 +16,7 @@ const MainComp = () => {
   return (
     <>
       {!isAppReady ? (
- <div className="bg-white dark:bg-gray-900 dark:text-white duration-200">
+ <div className="bg-white dark:bg-gray-900 dark:text-white duration-200" style={{ backgroundColor: "#D63024" }}>
  <Navbar/>
  
 </div>

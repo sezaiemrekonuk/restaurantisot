@@ -26,13 +26,13 @@ const Admin = () => {
           </li>
           {/* Add more list elements for the admin dashboard */}
           <li>
-            <Link to="/manage-users" className="text-blue-500 hover:underline">
-              Manage Users
+            <Link to="/campaign" className="text-blue-500 hover:underline">
+              Edit campaigns
             </Link>
           </li>
           <li>
-            <Link to="/analytics" className="text-blue-500 hover:underline">
-              Analytics
+            <Link to="/press" className="text-blue-500 hover:underline">
+              Edit Press
             </Link>
           </li>
           {/* Add more list elements as needed */}
