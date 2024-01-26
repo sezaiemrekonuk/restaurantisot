@@ -24,7 +24,7 @@ const Press = () => {
       <img
         onLoad={handleImageLoad} // Set the onLoad event
         src={PressImage}
-        alt="Press"
+        alt="Menu"
         style={{ width: '100%', height: '100%', objectFit: 'contain' }}
       />
 
@@ -35,7 +35,7 @@ const Press = () => {
           top: 0,
           left: 0,
           width: '50%',
-          height: '100%',
+          height: '70%',
           cursor: 'pointer',
         }}
         onClick={() => handleImageClick(links.option1)}
@@ -48,13 +48,28 @@ const Press = () => {
           top: 0,
           right: 0,
           width: '50%',
-          height: '100%',
+          height: '70%',
           cursor: 'pointer',
         }}
         onClick={() => handleImageClick(links.option2)}
       />
 
-
+      {/* Loader */}
+      {!imageLoaded && (
+        <div
+          style={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)',
+            padding: '10px',
+            borderRadius: '5px',
+          }}
+        >
+          <ClipLoader size={30} color={'#ffffff'} loading={!imageLoaded} />
+        </div>
+      )}
     </div>
   );
 };
