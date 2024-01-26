@@ -13,8 +13,8 @@ export default function Payment() {
           },
         ],
         mode: 'payment',
-        successUrl: `http://www.restaurantisot.com/success?session_id={CHECKOUT_SESSION_ID}?payment_success=true`,
-        cancelUrl: `http://www.restaurantisot.com/cancel`,
+        successUrl: `https://www.restaurantisot.com/success?session_id={CHECKOUT_SESSION_ID}?payment_success=true`,
+        cancelUrl: `https://www.restaurantisot.com/cancel`,
         customerEmail: 'customer@email.com',
       });
 

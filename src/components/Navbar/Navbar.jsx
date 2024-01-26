@@ -75,7 +75,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const fetchImageUrl = async () => {
-      const imagePath = 'images/about_11zon.jpeg'; // Replace with the actual path of the uploaded image
+      const imagePath = 'images/hero.webp'; // Replace with the actual path of the uploaded image
       const url = await getDownloadUrl(imagePath);
       setImageUrl(url);
     };
@@ -147,7 +147,7 @@ const Navbar = () => {
             )}
           </div>
           <div className="relative min-h-full w-full h-96 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] 2xl:h-[700px] mt-10" style={{ backgroundColor: "#D63024" }}>
-            <div className="absolute left-8 text-white text-left writing" style={{position:"absolute", top:"15rem", zIndex:"1000"}}>
+            <div className="absolute left-8 text-white text-left writing" style={{position:"absolute", top:"10rem", zIndex:"1000"}}>
               <p className="text-4xl sm:text-5xl pristina-font leading-tight">
                 <span className="block">We are introducing Turkish hospitality</span>
                 <span className="block">to the city of Philadelphia…</span>
