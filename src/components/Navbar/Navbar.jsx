@@ -22,7 +22,7 @@ const Menu = [
   { id: 4, name: "Order"},
   { id: 5, name: "Gift Cards" },
   { id: 6, name: "Contact" },
-  { id: 7, name: "Press", link: "/#about" },
+  { id: 7, name: "Press", link: "/#" },
 ];
 
 const Navbar = () => {
@@ -147,7 +147,7 @@ const Navbar = () => {
             )}
           </div>
           <div className="relative min-h-full w-full h-96 sm:h-80 md:h-96 lg:h-[500px] xl:h-[600px] 2xl:h-[700px] mt-10" style={{ backgroundColor: "#D63024" }}>
-            <div className="absolute left-8 text-white text-left writing" style={{position:"absolute", top:"10rem", zIndex:"1000"}}>
+            <div className="absolute left-8 text-white text-left writing" style={{position:"absolute", top:"10rem", zIndex: isMenuOpen ? "0" : "1000"}}>
               <p className="text-4xl sm:text-5xl pristina-font leading-tight">
                 <span className="block">We are introducing Turkish hospitality</span>
                 <span className="block">to the city of Philadelphia…</span>

@@ -9,6 +9,7 @@ import Order from '../Catering/Catering.jsx';
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from 'react-router-dom';
 import Menu from "../Menu/Menu.jsx";
+import Press from '../Press/Press.jsx';
 
 const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -61,6 +62,8 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
           return { src: Catering, key: 'catering' };
         case 'Menu':
           return { src: Menu, key: 'menu' }; // Display the "Menu" image
+        case 'Press':
+          return { src: Press, key: 'press' };
         default:
           return null;
       }
@@ -134,38 +137,51 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
             <Order />
           ) : (
             <>
-              {getImageForMenuItem() && (
-                <>
-                  {selectedMenuItem.name === 'Menu' ? (
-                     
-                    // Adjusted styles for the "Menu" component
-                    <div
-                      style={{
-                        position: 'absolute',
-                        top: '-5rem', 
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        width: '100%',
-                      }}
-                    >
-                      <Menu />
-                    </div>
-                  ) : (
-                    // Styles for other menu items
-                    <img
-                      key={imageKey + getImageForMenuItem().key}
-                      onLoad={handleImageLoad}
-                      onMouseEnter={() => setIsHovered(true)}
-                      onMouseLeave={() => setIsHovered(false)}
-                      onClick={handleLinkClick}
-                      src={getImageForMenuItem().src}
-                      alt={selectedMenuItem.name}
-                      style={{ width: "auto", minHeight: '600px', objectFit: 'contain' }}
-                      loading="lazy"
-                    />
-                  )}
-                </>
-              )}
+{getImageForMenuItem() && (
+  <>
+    {selectedMenuItem.name === 'Menu' ? (
+      // Adjusted styles for the "Menu" component
+      <div
+        style={{
+          position: 'absolute',
+          top: '-5rem', 
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '100%',
+        }}
+      >
+        <Menu />
+      </div>
+    ) : selectedMenuItem.name === 'Press' ? (
+      // Adjusted styles for the "Press" component
+      <div
+        style={{
+          position: 'absolute',
+          top: '-5rem', 
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '100%',
+        }}
+      >
+        <Press />
+      </div>
+    ) : (
+      // Styles for other menu items
+      <img
+        key={imageKey + getImageForMenuItem().key}
+        onLoad={handleImageLoad}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        onClick={handleLinkClick}
+        src={getImageForMenuItem().src}
+        alt={selectedMenuItem.name}
+        style={{ width: "auto", minHeight: '600px', objectFit: 'contain' }}
+        loading="lazy"
+      />
+    )}
+  </>
+)}
+
               {selectedMenuItem.name !== 'Order' && isHovered && selectedMenuItem.link && (
                 <div
                   style={{
@@ -183,7 +199,7 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
                 </div>
               )}
 
-{!imageLoaded && selectedMenuItem.name !== "Menu" && (
+{!imageLoaded && selectedMenuItem.name !== "Menu" && selectedMenuItem.name !== "Press" && (
   <div
     style={{
       position: 'absolute',
