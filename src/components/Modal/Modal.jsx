@@ -199,9 +199,10 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
                 </div>
               )}
 
-{!imageLoaded && selectedMenuItem.name !== "Menu" && selectedMenuItem.name !== "Press" && (
+{!imageLoaded && selectedMenuItem.name !== "Menu"  && (
   <div
     style={{
+      display: selectedMenuItem.name === 'Press' && "none",
       position: 'absolute',
       top: '50%',
       left: '50%',
@@ -211,7 +212,7 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
       borderRadius: '5px',
     }}
   >
-    <ClipLoader size={30} color={'#ffffff'} loading={!imageLoaded} />
+    <ClipLoader size={30} color= {'#ffffff'} loading={!imageLoaded} />
   </div>
 )}
             </>

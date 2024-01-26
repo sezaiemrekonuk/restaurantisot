@@ -22,11 +22,11 @@ const Press = () => {
     <div style={{ position: 'relative', width: '100%', height: '100vh'}}>
       {/* Image */}
       <img
-        onLoad={handleImageLoad} // Set the onLoad event
-        src={PressImage}
-        alt="Menu"
-        style={{ width: '100%', height: '100%', objectFit: 'contain' }}
-      />
+  onLoad={handleImageLoad}
+  src={PressImage}
+  alt="Press"
+  style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+/>
 
       {/* First Option */}
       <div
