@@ -4,19 +4,19 @@ import AboutImage from '../../assets/Modals/about.webp';
 import Yelp from '../../assets/Modals/yelp.webp';
 import Catering from '../../assets/Modals/ez.webp';
 import GiftCards from "../../assets/Modals/giftcard.webp";
-import Contact from "../../assets/Modals/contact.webp";
+import Contact from "../../assets/Modals/contact.jpg";
 import Order from '../Catering/Catering.jsx';
 import ClipLoader from "react-spinners/ClipLoader";
 import { useNavigate } from 'react-router-dom';
 import Menu from "../Menu/Menu.jsx";
 import Press from '../Press/Press.jsx';
 
-const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
+const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [contentWidth, setContentWidth] = useState('35rem');
   const [contentHeight, setContentHeight] = useState("40rem");
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageKey, setImageKey] = useState(0); 
+  const [imageKey, setImageKey] = useState(0);
 
   const navigate = useNavigate();
 
@@ -81,7 +81,11 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
         : "https://www.opentable.com/r/isot-mediterranean-cuisine-philadelphia";
 
       window.open(url, '_blank');
-    } else {
+    }
+    else if (selectedMenuItem.name === "Contact") {
+      window.open("mailto:isotphilly@gmail.com", '_blank');
+    }
+    else {
       if (selectedMenuItem.link) {
         window.open(selectedMenuItem.link, '_blank');
       }
@@ -103,7 +107,7 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
       style={{
         overlay: {
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex:"2000"
+          zIndex: "2000"
         },
         content: {
           top: '50%',
@@ -137,50 +141,50 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
             <Order />
           ) : (
             <>
-{getImageForMenuItem() && (
-  <>
-    {selectedMenuItem.name === 'Menu' ? (
-      // Adjusted styles for the "Menu" component
-      <div
-        style={{
-          position: 'absolute',
-          top: '-5rem', 
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '100%',
-        }}
-      >
-        <Menu />
-      </div>
-    ) : selectedMenuItem.name === 'Press' ? (
-      // Adjusted styles for the "Press" component
-      <div
-        style={{
-          position: 'absolute',
-          top: '-5rem', 
-          left: '50%',
-          transform: 'translateX(-50%)',
-          width: '100%',
-        }}
-      >
-        <Press />
-      </div>
-    ) : (
-      // Styles for other menu items
-      <img
-        key={imageKey + getImageForMenuItem().key}
-        onLoad={handleImageLoad}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-        onClick={handleLinkClick}
-        src={getImageForMenuItem().src}
-        alt={selectedMenuItem.name}
-        style={{ width: "auto", minHeight: '600px', objectFit: 'contain' }}
-        loading="lazy"
-      />
-    )}
-  </>
-)}
+              {getImageForMenuItem() && (
+                <>
+                  {selectedMenuItem.name === 'Menu' ? (
+                    // Adjusted styles for the "Menu" component
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '-5rem',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '100%',
+                      }}
+                    >
+                      <Menu />
+                    </div>
+                  ) : selectedMenuItem.name === 'Press' ? (
+                    // Adjusted styles for the "Press" component
+                    <div
+                      style={{
+                        position: 'absolute',
+                        top: '-5rem',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        width: '100%',
+                      }}
+                    >
+                      <Press />
+                    </div>
+                  ) : (
+                    // Styles for other menu items
+                    <img
+                      key={imageKey + getImageForMenuItem().key}
+                      onLoad={handleImageLoad}
+                      onMouseEnter={() => setIsHovered(true)}
+                      onMouseLeave={() => setIsHovered(false)}
+                      onClick={handleLinkClick}
+                      src={getImageForMenuItem().src}
+                      alt={selectedMenuItem.name}
+                      style={{ width: "auto", minHeight: '600px', objectFit: 'contain' }}
+                      loading="lazy"
+                    />
+                  )}
+                </>
+              )}
 
               {selectedMenuItem.name !== 'Order' && isHovered && selectedMenuItem.link && (
                 <div
@@ -199,22 +203,22 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem}) => {
                 </div>
               )}
 
-{!imageLoaded && selectedMenuItem.name !== "Menu"  && (
-  <div
-    style={{
-      display: selectedMenuItem.name === 'Press' && "none",
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      transform: 'translate(-50%, -50%)',
-      backgroundColor: 'rgba(255, 255, 255, 0.7)',
-      padding: '10px',
-      borderRadius: '5px',
-    }}
-  >
-    <ClipLoader size={30} color= {'#ffffff'} loading={!imageLoaded} />
-  </div>
-)}
+              {!imageLoaded && selectedMenuItem.name !== "Menu" && (
+                <div
+                  style={{
+                    display: selectedMenuItem.name === 'Press' && "none",
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    backgroundColor: 'rgba(255, 255, 255, 0.7)',
+                    padding: '10px',
+                    borderRadius: '5px',
+                  }}
+                >
+                  <ClipLoader size={30} color={'#ffffff'} loading={!imageLoaded} />
+                </div>
+              )}
             </>
           )}
         </div>
