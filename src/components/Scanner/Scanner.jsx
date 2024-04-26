@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { QrReader } from 'react-qr-reader';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase'; // Assuming 'firebase.js' is in the same directory as the component
 import { useNavigate } from 'react-router-dom';
@@ -78,7 +77,7 @@ const QRScanner = () => {
         className="w-3/4 md:w-2/3 lg:w-1/2 bg-white p-8 rounded-md shadow-lg relative"
         style={{ border: '3px solid black', borderRadius: '10px' }}
       >
-        <QrReader
+        {/* <QrReader
           delay={300}
           onError={handleError}
           style={{ width: '100%' }}
@@ -86,12 +85,11 @@ const QRScanner = () => {
           constraints={{
             facingMode: 'environment',
           }}
-        />
+        /> */}
         {showApprovalTick && (
           <div
-            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-md ${
-              result === 'found' ? 'bg-green-500' : 'bg-red-500'
-            }`}
+            className={`absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 rounded-md ${result === 'found' ? 'bg-green-500' : 'bg-red-500'
+              }`}
           >
             {/* Approval Tick or Cross Icon */}
             {result === 'found' ? (
