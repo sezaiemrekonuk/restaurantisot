@@ -175,11 +175,11 @@ const Navbar = () => {
                 <span className="block">to the city of Philadelphia…</span>
               </p>
             </div>
-            <Carousel className="h-dvh mt-14 relative" responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={5000} removeArrowOnDeviceType={["tablet", "mobile"]} showDots={false}>
-              <img src={SliderImg1} alt="Hero" className="w-full min-h-dvh object-cover absolute" />
-              <img src={SliderImg2} alt="Hero" className="w-full max-h-dvh object-cover" />
-              <img src={SliderImg3} alt="Hero" className="w-full max-h-dvh object-cover" />
-              <img src={SliderImg4} alt="Hero" className="w-full max-h-dvh object-cover" />
+            <Carousel className="h-dvh mt-14" responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={5000} removeArrowOnDeviceType={["tablet", "mobile"]} showDots={false}>
+              <img src={SliderImg1} alt="Hero" className="md:min-w-full h-dvh object-cover" />
+              <img src={SliderImg2} alt="Hero" className="md:min-w-full h-dvh object-cover" />
+              <img src={SliderImg3} alt="Hero" className="md:min-w-full h-dvh object-cover" />
+              <img src={SliderImg4} alt="Hero" className="md:min-w-full h-dvh object-cover" />
             </Carousel>
           </div>
           <MenuItemModal

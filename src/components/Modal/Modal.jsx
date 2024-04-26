@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import AboutImage from '../../assets/Modals/about.webp';
-import Yelp from '../../assets/Modals/yelp.webp';
+import Yelp from '../../assets/Modals/yelp.jpg';
 import Catering from '../../assets/Modals/ez.webp';
 import GiftCards from "../../assets/Modals/giftcard.webp";
 import Contact from "../../assets/Modals/contact.jpg";
@@ -74,11 +74,8 @@ const MenuItemModal = ({ isOpen, onRequestClose, selectedMenuItem }) => {
   const handleLinkClick = (event) => {
     if (selectedMenuItem.name === "Reservations" && selectedMenuItem.link) {
       const { offsetX, target } = event.nativeEvent;
-      const isLeftHalf = offsetX < target.width / 2;
 
-      const url = isLeftHalf
-        ? "https://www.yelp.com/biz/isot-mediterranean-cuisine-philadelphia-3"
-        : "https://www.opentable.com/r/isot-mediterranean-cuisine-philadelphia";
+      const url = "https://www.yelp.com/biz/isot-mediterranean-cuisine-philadelphia-3";
 
       window.open(url, '_blank');
     }
