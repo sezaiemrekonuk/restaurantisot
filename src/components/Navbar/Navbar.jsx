@@ -176,6 +176,7 @@ const Navbar = () => {
               </p>
             </div>
             <Carousel className="h-dvh mt-14" responsive={responsive} infinite={true} autoPlay={true} autoPlaySpeed={5000} removeArrowOnDeviceType={["tablet", "mobile"]} showDots={false}>
+              <img src={Hero} alt="Hero" className="md:min-w-full h-dvh object-cover" />
               <img src={SliderImg1} alt="Hero" className="md:min-w-full h-dvh object-cover" />
               <img src={SliderImg2} alt="Hero" className="md:min-w-full h-dvh object-cover" />
               <img src={SliderImg3} alt="Hero" className="md:min-w-full h-dvh object-cover" />
